@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistik Kepadatan Penduduk - Kota Malang</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="bg-blue-50 text-gray-800 flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-lg flex flex-col">
+        <div class="p-6 border-b border-gray-200">
+            <h1 class="text-xl font-bold text-blue-600">Malang WebGIS</h1>
+            <p class="text-sm text-gray-500">Kepadatan Penduduk</p>
+        </div>
+        <nav class="flex-1 p-4">
+            <ul class="space-y-3">
+                <li>
+                    <a href="index.html"
+                        class="block py-2 px-3 rounded-lg text-gray-700 hover:bg-blue-100 hover:text-blue-600 font-medium">Dashboard</a>
+                </li>
+                <li>
+                    <a href="statistik.html" class="block py-2 px-3 rounded-lg text-white bg-blue-500 font-medium">Data
+                        Statistik</a>
+                </li>
+                <li>
+                    <a href="analisis.html"
+                        class="block py-2 px-3 rounded-lg text-gray-700 hover:bg-blue-100 hover:text-blue-600 font-medium">Analisis</a>
+                </li>
+                <li>
+                    <a href="tentang.html"
+                        class="block py-2 px-3 rounded-lg text-gray-700 hover:bg-blue-100 hover:text-blue-600 font-medium">Tentang</a>
+                </li>
+            </ul>
+        </nav>
+        <footer class="p-4 border-t border-gray-200 text-xs text-gray-500">
+            © 2025 Andromeda
+        </footer>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col">
+        <!-- Header -->
+        <header class="flex items-center justify-between p-4 bg-white border-b border-gray-200">
+            <h2 class="text-lg font-semibold text-blue-600">Data Statistik Kepadatan Penduduk</h2>
+            <div class="text-sm text-gray-500">Kota Malang</div>
+        </header>
+
+        <!-- Content -->
+        <section class="p-6 flex-1 overflow-y-auto space-y-6">
+
+            <!-- Ringkasan -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white rounded-2xl shadow p-4">
+                    <p class="text-sm text-gray-500">Total Kecamatan</p>
+                    <h3 class="text-2xl font-bold text-blue-600 mt-1">33</h3>
+                </div>
+                <div class="bg-white rounded-2xl shadow p-4">
+                    <p class="text-sm text-gray-500">Rata-rata Kepadatan</p>
+                    <h3 class="text-2xl font-bold text-blue-600 mt-1">780 / km²</h3>
+                </div>
+                <div class="bg-white rounded-2xl shadow p-4">
+                    <p class="text-sm text-gray-500">Tahun Data</p>
+                    <h3 class="text-2xl font-bold text-blue-600 mt-1">2010</h3>
+                </div>
+            </div>
+
+            <!-- Grafik -->
+            <div class="bg-white rounded-2xl shadow p-6">
+                <h3 class="text-lg font-semibold text-blue-600 mb-4">Grafik Kepadatan Penduduk per Wilayah</h3>
+                <canvas id="chartKepadatan"></canvas>
+            </div>
+
+            <!-- Tabel -->
+            <div class="bg-white rounded-2xl shadow p-6">
+                <h3 class="text-lg font-semibold text-blue-600 mb-4">Tabel Kepadatan Penduduk</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full border border-gray-200 rounded-lg">
+                        <thead class="bg-blue-100 text-blue-700">
+                            <tr>
+                                <th class="px-4 py-2 text-left text-sm font-semibold border">No</th>
+                                <th class="px-4 py-2 text-left text-sm font-semibold border">Wilayah</th>
+                                <th class="px-4 py-2 text-left text-sm font-semibold border">Luas (km²)</th>
+                                <th class="px-4 py-2 text-left text-sm font-semibold border">Jumlah Penduduk</th>
+                                <th class="px-4 py-2 text-left text-sm font-semibold border">Kepadatan (/km²)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700">
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">1</td>
+                                <td class="px-4 py-2 border">DONOMULYO</td>
+                                <td class="px-4 py-2 border">101.24</td>
+                                <td class="px-4 py-2 border">65027</td>
+                                <td class="px-4 py-2 border">642</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">2</td>
+                                <td class="px-4 py-2 border">TEMPURSARI</td>
+                                <td class="px-4 py-2 border">106.07</td>
+                                <td class="px-4 py-2 border">65027</td>
+                                <td class="px-4 py-2 border">613</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">3</td>
+                                <td class="px-4 py-2 border">KARANGKATES</td>
+                                <td class="px-4 py-2 border">58.15</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">889</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">4</td>
+                                <td class="px-4 py-2 border">JATIGUWI</td>
+                                <td class="px-4 py-2 border">66.13</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">781</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">5</td>
+                                <td class="px-4 py-2 border">SUKOWILANGUN BARAT</td>
+                                <td class="px-4 py-2 border">108.54</td>
+                                <td class="px-4 py-2 border">60365</td>
+                                <td class="px-4 py-2 border">556</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">6</td>
+                                <td class="px-4 py-2 border">ARJOWILANGUN</td>
+                                <td class="px-4 py-2 border">159.32</td>
+                                <td class="px-4 py-2 border">60365</td>
+                                <td class="px-4 py-2 border">379</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">7</td>
+                                <td class="px-4 py-2 border">ARJOSARI</td>
+                                <td class="px-4 py-2 border">241.33</td>
+                                <td class="px-4 py-2 border">60365</td>
+                                <td class="px-4 py-2 border">250</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">8</td>
+                                <td class="px-4 py-2 border">NGADILUWIH</td>
+                                <td class="px-4 py-2 border">80.51</td>
+                                <td class="px-4 py-2 border">60365</td>
+                                <td class="px-4 py-2 border">750</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">9</td>
+                                <td class="px-4 py-2 border">SUMBERPUCUNG</td>
+                                <td class="px-4 py-2 border">94.12</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">549</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">10</td>
+                                <td class="px-4 py-2 border">GEDOG WETAN</td>
+                                <td class="px-4 py-2 border">87.24</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">593</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">11</td>
+                                <td class="px-4 py-2 border">BATURETNO</td>
+                                <td class="px-4 py-2 border">59.87</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">863</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">12</td>
+                                <td class="px-4 py-2 border">KEDUNGKANDANG</td>
+                                <td class="px-4 py-2 border">72.45</td>
+                                <td class="px-4 py-2 border">88744</td>
+                                <td class="px-4 py-2 border">1225</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">13</td>
+                                <td class="px-4 py-2 border">KLOJEN</td>
+                                <td class="px-4 py-2 border">43.12</td>
+                                <td class="px-4 py-2 border">88744</td>
+                                <td class="px-4 py-2 border">2058</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">14</td>
+                                <td class="px-4 py-2 border">LOWOKWARU</td>
+                                <td class="px-4 py-2 border">64.31</td>
+                                <td class="px-4 py-2 border">88744</td>
+                                <td class="px-4 py-2 border">1379</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">15</td>
+                                <td class="px-4 py-2 border">SUKUN</td>
+                                <td class="px-4 py-2 border">69.44</td>
+                                <td class="px-4 py-2 border">88744</td>
+                                <td class="px-4 py-2 border">1277</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">16</td>
+                                <td class="px-4 py-2 border">BLIMBING</td>
+                                <td class="px-4 py-2 border">71.21</td>
+                                <td class="px-4 py-2 border">88744</td>
+                                <td class="px-4 py-2 border">1246</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">17</td>
+                                <td class="px-4 py-2 border">TUMPANG</td>
+                                <td class="px-4 py-2 border">89.54</td>
+                                <td class="px-4 py-2 border">65027</td>
+                                <td class="px-4 py-2 border">726</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">18</td>
+                                <td class="px-4 py-2 border">PAKISAJI</td>
+                                <td class="px-4 py-2 border">95.33</td>
+                                <td class="px-4 py-2 border">65027</td>
+                                <td class="px-4 py-2 border">682</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">19</td>
+                                <td class="px-4 py-2 border">SINGOSARI</td>
+                                <td class="px-4 py-2 border">84.19</td>
+                                <td class="px-4 py-2 border">65027</td>
+                                <td class="px-4 py-2 border">773</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">20</td>
+                                <td class="px-4 py-2 border">KARANGPLOSO</td>
+                                <td class="px-4 py-2 border">91.72</td>
+                                <td class="px-4 py-2 border">65027</td>
+                                <td class="px-4 py-2 border">709</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">21</td>
+                                <td class="px-4 py-2 border">BULULAWANG</td>
+                                <td class="px-4 py-2 border">78.41</td>
+                                <td class="px-4 py-2 border">65027</td>
+                                <td class="px-4 py-2 border">829</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">22</td>
+                                <td class="px-4 py-2 border">GONDANGLEGI</td>
+                                <td class="px-4 py-2 border">74.87</td>
+                                <td class="px-4 py-2 border">65027</td>
+                                <td class="px-4 py-2 border">869</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">23</td>
+                                <td class="px-4 py-2 border">TIRTOYUDO</td>
+                                <td class="px-4 py-2 border">88.12</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">586</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">24</td>
+                                <td class="px-4 py-2 border">SUMBERMANJING</td>
+                                <td class="px-4 py-2 border">120.24</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">430</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">25</td>
+                                <td class="px-4 py-2 border">PAGAK</td>
+                                <td class="px-4 py-2 border">83.16</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">621</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">26</td>
+                                <td class="px-4 py-2 border">BANTUR</td>
+                                <td class="px-4 py-2 border">99.83</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">518</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">27</td>
+                                <td class="px-4 py-2 border">PONCOKUSUMO</td>
+                                <td class="px-4 py-2 border">85.65</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">603</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">28</td>
+                                <td class="px-4 py-2 border">TUMPANG KULON</td>
+                                <td class="px-4 py-2 border">87.33</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">592</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">29</td>
+                                <td class="px-4 py-2 border">PAKIS</td>
+                                <td class="px-4 py-2 border">80.17</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">645</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">30</td>
+                                <td class="px-4 py-2 border">WAGIR</td>
+                                <td class="px-4 py-2 border">97.24</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">531</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">31</td>
+                                <td class="px-4 py-2 border">DAU</td>
+                                <td class="px-4 py-2 border">91.82</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">563</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">32</td>
+                                <td class="px-4 py-2 border">DAU BARAT</td>
+                                <td class="px-4 py-2 border">104.77</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">493</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50">
+                                <td class="px-4 py-2 border">33</td>
+                                <td class="px-4 py-2 border">PAGEDANGAN</td>
+                                <td class="px-4 py-2 border">94.55</td>
+                                <td class="px-4 py-2 border">51676</td>
+                                <td class="px-4 py-2 border">546</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Script Chart -->
+    <script>
+        const ctx = document.getElementById('chartKepadatan').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'DONOMULYO', 'TEMPURSARI', 'KARANGKATES', 'JATIGUWI', 'SUKOWILANGUN BARAT',
+                    'ARJOWILANGUN', 'ARJOSARI', 'NGADILUWIH', 'SUMBERPUCUNG', 'GEDOG WETAN',
+                    'BATURETNO', 'KEDUNGKANDANG', 'KLOJEN', 'LOWOKWARU', 'SUKUN', 'BLIMBING',
+                    'TUMPANG', 'PAKISAJI', 'SINGOSARI', 'KARANGPLOSO', 'BULULAWANG', 'GONDANGLEGI',
+                    'TIRTOYUDO', 'SUMBERMANJING', 'PAGAK', 'BANTUR', 'PONCOKUSUMO', 'TUMPANG KULON',
+                    'PAKIS', 'WAGIR', 'DAU', 'DAU BARAT', 'PAGEDANGAN'
+                ],
+                datasets: [{
+                    label: 'Kepadatan (/km²)',
+                    data: [
+                        642, 613, 889, 781, 556,
+                        379, 250, 750, 549, 593,
+                        863, 1225, 2058, 1379, 1277, 1246,
+                        726, 682, 773, 709, 829, 869,
+                        586, 430, 621, 518, 603, 592,
+                        645, 531, 563, 493, 546
+                    ],
+                    backgroundColor: '#93c5fd',
+                    borderColor: '#3b82f6',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        ticks: {
+                            autoSkip: false,
+                            maxRotation: 60,
+                            minRotation: 60,
+                            color: '#1e3a8a',
+                            font: { size: 10 }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#1e3a8a' },
+                        grid: { color: '#e0f2fe' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: { color: '#1e3a8a' }
+                    },
+                    tooltip: { enabled: true }
+                }
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

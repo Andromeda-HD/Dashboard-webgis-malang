@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tentang Proyek - WebGIS Kepadatan Penduduk Kota Malang</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body class="bg-blue-50 text-gray-800 flex min-h-screen">
+    
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-lg flex flex-col">
+      <div class="p-6 border-b border-gray-200">
+        <h1 class="text-xl font-bold text-blue-600">Malang WebGIS</h1>
+        <p class="text-sm text-gray-500">Kepadatan Penduduk</p>
+      </div>
+      <nav class="flex-1 p-4">
+        <ul class="space-y-3">
+          <li>
+            <a href="index.html" class="block py-2 px-3 rounded-lg text-gray-700 hover:bg-blue-100 hover:text-blue-600 font-medium">Dashboard</a>
+          </li>
+          <li>
+            <a href="statistik.html" class="block py-2 px-3 rounded-lg text-gray-700 hover:bg-blue-100 hover:text-blue-600 font-medium">Data Statistik</a>
+          </li>
+          <li>
+            <a href="analisis.html" class="block py-2 px-3 rounded-lg text-gray-700 hover:bg-blue-100 hover:text-blue-600 font-medium">Analisis</a>
+          </li>
+          <li>
+            <a href="tentang.html" class="block py-2 px-3 rounded-lg bg-blue-100 text-blue-600 font-medium">Tentang</a>
+          </li>
+        </ul>
+      </nav>
+      <footer class="p-4 border-t border-gray-200 text-xs text-gray-500">
+        © 2025 Andromeda
+      </footer>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col">
+      
+      <!-- Header -->
+      <header class="flex items-center justify-between p-4 bg-white border-b border-gray-200">
+        <h2 class="text-lg font-semibold text-blue-600">Tentang Proyek</h2>
+        <div class="text-sm text-gray-500">Kota Malang</div>
+      </header>
+
+      <!-- Content -->
+      <section class="p-6 flex-1 overflow-y-auto space-y-6">
+
+        <!-- Deskripsi Proyek -->
+        <div class="bg-white rounded-2xl shadow p-6">
+          <h3 class="text-lg font-semibold text-blue-600 mb-3">Deskripsi Proyek</h3>
+          <p class="text-gray-700 leading-relaxed">
+            WebGIS Kepadatan Penduduk Kota Malang adalah sistem informasi geografis berbasis web 
+            yang menampilkan sebaran dan analisis kepadatan penduduk per kecamatan di Kota Malang. 
+            Sistem ini dirancang untuk membantu pemerintah, peneliti, dan masyarakat memahami kondisi 
+            kepadatan wilayah secara visual dan interaktif.
+          </p>
+        </div>
+
+        <!-- Tujuan Sistem -->
+        <div class="bg-white rounded-2xl shadow p-6">
+          <h3 class="text-lg font-semibold text-blue-600 mb-3">Tujuan Sistem</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>Menyediakan informasi spasial kepadatan penduduk per kecamatan.</li>
+            <li>Mendukung pengambilan keputusan berbasis data untuk perencanaan kota.</li>
+            <li>Memudahkan masyarakat memahami distribusi kepadatan wilayah.</li>
+          </ul>
+        </div>
+
+        <!-- Sumber Data -->
+        <div class="bg-white rounded-2xl shadow p-6">
+          <h3 class="text-lg font-semibold text-blue-600 mb-3">Sumber Data</h3>
+          <p class="text-gray-700 leading-relaxed">
+            Data diperoleh dari <span class="font-medium text-blue-600">Badan Pusat Statistik (BPS) Kota Malang</span> 
+            dan sumber terbuka lainnya yang relevan. Visualisasi peta memanfaatkan teknologi 
+            <span class="font-medium text-blue-600">Leaflet.js</span> dengan data geospasial berbentuk GeoJSON.
+          </p>
+        </div>
+
+        <!-- Pengembang -->
+        <div class="bg-white rounded-2xl shadow p-6">
+          <h3 class="text-lg font-semibold text-blue-600 mb-3">Pengembang</h3>
+          <p class="text-gray-700">
+            Proyek ini dikembangkan oleh <span class="font-semibold text-blue-600">Andromeda Hibnu Darmawi</span>, 
+            seorang <span class="italic">Mahasiswa Sistem Informasi</span> dan <span class="italic">Fakultas Teknik, Universitas Mulawarman</span> 
+            yang suka dengan teknologi geospasial, coding, dan analisis data.
+          </p>
+        </div>
+
+        <!-- Kontak -->
+        <div class="bg-white rounded-2xl shadow p-6">
+          <h3 class="text-lg font-semibold text-blue-600 mb-3">Kontak</h3>
+          <p class="text-gray-700 mb-2">Anda dapat menghubungi pengembang melalui:</p>
+          <ul class="space-y-2 text-gray-700">
+            <li>Email: <a href="mailto:andromedahibnu.d@gmail.com" class="text-blue-600 hover:underline">andromedahibnu.d@gmail.com</a></li>
+            <li>GitHub: <a href="https://github.com/andromeda-hd" target="_blank" class="text-blue-600 hover:underline">andromeda-hd</a></li>
+            <li>LinkedIn: <a href="https://www.linkedin.com/in/andromeda-hd-331784360" target="_blank" class="text-blue-600 hover:underline">Profil LinkedIn</a></li>
+            <li>Instagram: <a href="https://www.instagram.com/andromedahd__?igsh=NjdzMmNjZ2N0c2Ji" target="_blank" class="text-blue-600 hover:underline">@andromedahd__</a></li>
+          </ul>
+        </div>
+
+      </section>
+    </main>
+
+  </body>
+</html>

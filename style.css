@@ -1,0 +1,13 @@
+/* Warna scrollbar agar senada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #93c5fd; /* biru muda */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #60a5fa;
+}
